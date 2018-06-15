@@ -1,30 +1,31 @@
 # TDEX CHAT API
 websocket链接: wss://ttt.tdex.com/chat
 
-[一、聊天室](#1)  
+&nbsp; &nbsp; [业务逻辑](#1.0)  
 &nbsp; &nbsp; [心跳握手](#1.1)  
 &nbsp; &nbsp; [频道列表](#1.5)  
 &nbsp; &nbsp; [加入频道](#1.2)  
 &nbsp; &nbsp; [退出频道](#1.3)  
 &nbsp; &nbsp; [用户验证](#1.6)  
-&nbsp; &nbsp; [设置昵称](#1.7) 
-&nbsp; &nbsp; [发送消息](#1.4)   
-
-
-
+&nbsp; &nbsp; [设置昵称](#1.7)  
+&nbsp; &nbsp; [发送消息](#1.4)
 
 ---
-<h3 id='1.1'>心跳握手</h3>
+
+ <h3 id='1.1'>业务逻辑</h3>
+ 
+```
+  创建连接->心跳握手->获取频道->无验证->禁止发送消息 
+                            ->用户验证->无昵称->设置昵称->发送消息
+                            ->有昵称->发送消息
+ ```                                          
+
+ <h3 id='1.1'>心跳握手</h3>
 
 WebSocket API 支持双向心跳，无论是 Server 还是 Client 都可以发起 ping message，对方返回 pong message。
 
 注：返回的数据里面的 "pong" 的值为收到的 "ping" 的值 注：WebSocket Client 和 WebSocket Server 建立连接之后，WebSocket Server 每隔 5s（这个频率可能会变化） 会向 WebSocket Client 发起一次心跳，WebSocket Client 忽略心跳5次后，WebSocket Server 将会主动断开连接。
-
-业务逻辑:
-  创建连接->心跳握手->获取频道->无验证->禁止发送消息 
-                            ->用户验证->无昵称->设置昵称->发送消息
-                            ->有昵称->发送消息
-                                            
+ 
 请求参数：
 
 参数名|类型|说明
