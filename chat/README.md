@@ -156,6 +156,7 @@ sub|string|频道ID
 uid|string|用户ID
 action|string|信息(join,exit)
 uids|array|该频道用户列表
+cnt|int|在线人数
 
 ```
 {
@@ -164,7 +165,8 @@ uids|array|该频道用户列表
         "sub":"roomworld",
         "uid":112312,
         "action":"join",
-        "uids":[112312]
+        "uids":[112312],
+        "cnt":1
     }
 }
 ```
