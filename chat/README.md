@@ -20,7 +20,11 @@ WebSocket API 支持双向心跳，无论是 Server 还是 Client 都可以发�
 
 注：返回的数据里面的 "pong" 的值为收到的 "ping" 的值 注：WebSocket Client 和 WebSocket Server 建立连接之后，WebSocket Server 每隔 5s（这个频率可能会变化） 会向 WebSocket Client 发起一次心跳，WebSocket Client 忽略心跳5次后，WebSocket Server 将会主动断开连接。
 
-
+业务逻辑:
+  创建连接->心跳握手->获取频道->无验证->禁止发送消息 
+                            ->用户验证->无昵称->设置昵称->发送消息
+                            ->有昵称->发送消息
+                                            
 请求参数：
 
 参数名|类型|说明
@@ -96,7 +100,6 @@ id=1520474198&task=sub
 ---|---|---
 id|string|请求ID(时间戳)
 task|string|消息类型
-uid|string|用户ID
 sub|string|频道ID
 
 
@@ -108,11 +111,11 @@ data|object|数据对象
 id|string|请求ID(时间戳)
 result|string|消息类型
 chats|array|该频道信息列表
-
+mtype|int|消息类型(1用户,2客服,3系统)
 
 请求示例:
 ```
-id=1520474198&uid=123131&sub=roomworld&task=join
+id=1520474198&sub=roomworld&task=join
 ```
 返回示例:
 ```
@@ -126,13 +129,15 @@ id=1520474198&uid=123131&sub=roomworld&task=join
                 "sub":"roomservice",
                 "uid":112312,
                 "time":1520474198,
-                "msg":"hello world"
+                "msg":"helloworld",
+                "mtype":1
             },
             {
                 "sub":"roomservice",
                 "uid":112312,
                 "time":1520474198,
-                "msg":"hello world"
+                "msg":"hello world",
+                "mtype":1
             },
         ]
     }
