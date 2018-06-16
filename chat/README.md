@@ -243,7 +243,8 @@ id|string|请求ID(时间戳)
 task|string|消息类型
 uid|string|用户ID
 token|string|频道ID
-time|string|消息
+time|string|有效时间
+ssid|string|会话ID（APP的额外参数mytradeId,WEB忽略）
 
 返回参数: 
 
@@ -256,7 +257,7 @@ data|string|昵称
 
 请求示例:
 ```
-id=1520474198&uid=abc&token=abc&time=1520474198&task=auth
+id=1520474198&uid=abc&token=abc&time=1520474198&ssid=xxxx&task=auth
 ```
 
 ```
