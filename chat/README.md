@@ -8,7 +8,8 @@ websocket链接: wss://ttt.tdex.com/chat
 &nbsp; &nbsp; [退出频道](#1.3)  
 &nbsp; &nbsp; [用户验证](#1.6)  
 &nbsp; &nbsp; [设置昵称](#1.7)  
-&nbsp; &nbsp; [发送消息](#1.4)
+&nbsp; &nbsp; [发送消息](#1.4)  
+&nbsp; &nbsp; [错误代码](#1.8)  
 
 ---
 
@@ -349,3 +350,29 @@ msg=asdasd&sub=roomservice&task=msg&mtype=1
 }
 ```
 
+<h3 id='1.8'>错误代码</h3>
+
+```
+1000 缺少参数	
+1001 消息类型错误	
+1002 信息不能为空	
+1003 发送信息太频繁	
+1004 Token验证失败	
+1005 Token已过期	
+1006 Token缺少有效时间	
+1007 请先登录	
+1008 昵称已存在	
+1009 频道异常	
+```
+
+返回示例:
+```
+{
+    "task":"error",
+    "data":{
+        "id":1520474198,
+        "code"1000,
+        "result":"error message"
+    }
+}
+```
